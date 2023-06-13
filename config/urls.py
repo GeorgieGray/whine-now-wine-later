@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.product.views import Buy
+from product.views import Buy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
