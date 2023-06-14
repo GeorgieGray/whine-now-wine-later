@@ -6,9 +6,11 @@
         Hello world!
 
         {% if user.is_authenticated %}
-            <p> Welcome '{{ user.username }}'</p>
+            Hi {{ user.username }}!
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
         {% else %}
-            <a href="/login">Login</a>
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
         {% endif %}
     </body>
 </html>

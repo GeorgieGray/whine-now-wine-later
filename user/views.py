@@ -1,8 +1,14 @@
 from django.views.generic.edit import FormView
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm, LoginForm
 from django.shortcuts import redirect
+from django.views import View
+
+class Logout(View):
+    def get(self, request):
+        logout(request)
+        return redirect("root")
 
 class Login(FormView):
     template_name = "login.html"
@@ -25,10 +31,7 @@ class Login(FormView):
             )
             login(request, user)
             return redirect("root")
-        else:
-            print(form.errors)
-            print(form.cleaned_data)
-            
+        else:            
             return redirect("login")
 
     
