@@ -6,15 +6,18 @@ from django.conf.urls import include
 from django.contrib.sitemaps.views import sitemap
 from user.sitemap import UserSitemap
 from product.sitemap import ProductSitemap
+from checkout.sitemap import CheckoutSitemap
 
 sitemaps = {
     'product': ProductSitemap,
-    'user': UserSitemap
+    'user': UserSitemap,
+    'checkout': CheckoutSitemap
 }
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('product.urls')),
     path('user/', include('user.urls')),
+    path("checkout/", include('checkout.urls')),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps})
 ]
