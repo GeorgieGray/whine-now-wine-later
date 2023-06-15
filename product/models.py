@@ -5,3 +5,7 @@ class Product(models.Model):
     name = models.CharField(max_length=32)
     price = models.FloatField()
     code = models.CharField(max_length=32, unique=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return "Product: " + self.name
