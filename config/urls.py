@@ -1,29 +1,19 @@
-"""
-URL configuration for config project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from product.views import Buy
 from user.views import Login, Register, Logout
 from django.conf.urls import include
+from django.contrib.sitemaps.views import sitemap
+from user.sitemap import UserSitemap
+from product.sitemap import ProductSitemap
+
+sitemaps = {
+    'product': ProductSitemap,
+    'user': UserSitemap
+}
 
 urlpatterns = [
-    # path('admin/', admin.site.urls, name="admin"),
-    path('', Buy.as_view(), name="root"),
-    path('register/', Register.as_view(), name="register"),
-    path('login/', Login.as_view(), name="login"),
-    path('logout/', Logout.as_view(), name="logout")
+    path('', include('product.urls')),
+    path('user/', include('user.urls')),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps})
 ]
