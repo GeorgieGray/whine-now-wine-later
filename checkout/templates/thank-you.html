@@ -1,0 +1,13 @@
+{% load static %}
+
+<html>
+    <header>
+    </header>
+    <body>
+       Thanks for your purchase! We're looking forward to seeing you at the gym.
+        <br><br>
+        {{ view.product.name }}
+        {{ view.product.description }}
+        €{{ view.product.price }}
+    </body>
+</html>
