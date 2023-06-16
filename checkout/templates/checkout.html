@@ -7,7 +7,18 @@
        Time to buy!
 
        {{ view.product.name }}
-       
+       {{ view.product.description }}
+
+       €{{ view.product.price }}
+
+       <button id="buy-now">
+            BUY NOW
+       </button>
+
+       <script>
+        window.productId = {{ view.product.id }}
+       </script>
+
        <script src="https://js.stripe.com/v3/"></script>
        <script src="{% static 'main.js' %}"></script>
     </body>
