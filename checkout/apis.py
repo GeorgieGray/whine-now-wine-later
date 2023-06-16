@@ -4,6 +4,7 @@ from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import os
 import stripe
+from product.models import Product
 
 class StripeConfig(View):
     @csrf_exempt
@@ -11,9 +12,12 @@ class StripeConfig(View):
         public_key = os.getenv('STRIPE_PUBLISHABLE_KEY')
         return JsonResponse({ 'publicKey': public_key }, safe=False)
 
-class StripeCheckout(View):
+class StripeSession(View):
     @csrf_exempt
     def get(self, request):
+        id = kwargs.get('id', None)
+        product = get_object_or_404(Product, pk=id)
+
         try:
             host = request.get_host()
             stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
@@ -24,7 +28,9 @@ class StripeCheckout(View):
                 payment_method_types=['card'],
                 mode='payment',
                 line_items=[
-                    {} # TODO
+                    {
+                        'price': product.stripe_price
+                    }
                 ]
             )
             return JsonResponse({ 'sessionId': checkout_session['id'] })

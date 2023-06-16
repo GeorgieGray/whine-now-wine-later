@@ -13,4 +13,3 @@ class Membership(models.Model):
     purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
     start = models.DateField()
     end = models.DateField()
-    recurring = models.BooleanField()

@@ -6,6 +6,7 @@ class Product(models.Model):
     price = models.FloatField()
     code = models.CharField(max_length=32, unique=True)
     description = models.TextField(blank=True)
+    stripe_price = models.CharField(max_length=64)
 
     class Meta:
         ordering = ["id"]
