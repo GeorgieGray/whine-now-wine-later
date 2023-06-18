@@ -1,0 +1,18 @@
+<html>
+    <header>
+
+    </header>
+    <body>
+        {% for activity in object_list %}
+            <div>{{ activity.type }}</div>
+            <div>{{ activity.time }}</div>
+            <div>{{ activity.date }}</div>
+            <a href="/workouts/{{ activity.id }}">
+                <button>
+                    Edit
+                </button>
+            </a>
+            <br /> <br />
+        {% endfor %}
+    </body>
+</html>
