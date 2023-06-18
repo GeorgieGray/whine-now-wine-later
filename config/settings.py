@@ -21,15 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_URL='/user/login'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6pri($f-^wwoa(n)un4_)sgqq8%u+)p*-x-6b3ouefc^ui0dk3'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
