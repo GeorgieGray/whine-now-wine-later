@@ -2,9 +2,13 @@ from django.db import models
 from django.conf import settings
 
 class Subscriber(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
-    epoch = models.DateField()
+    email = models.EmailField(max_length=254, primary_key=True)
+    epoch = models.DateField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['email'],
+                name="one_row_per_email"
+            )
+        ]
