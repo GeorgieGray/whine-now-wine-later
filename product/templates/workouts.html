@@ -17,6 +17,11 @@
                     Edit
                 </button>
             </a>
+            <a href="{% url 'delete_workout' activity.id %}">
+                <button>
+                    Delete
+                </button>
+            </a>
             <br /> <br />
         {% endfor %}
     </body>
