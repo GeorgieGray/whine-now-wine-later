@@ -3,11 +3,16 @@
 
     </header>
     <body>
+        <a href="{% url 'create_workout' %}">
+            <button>
+                Create
+            </button>
+        </a>
         {% for activity in object_list %}
-            <div>{{ activity.type }}</div>
-            <div>{{ activity.time }}</div>
-            <div>{{ activity.date }}</div>
-            <a href="/workouts/{{ activity.id }}">
+            <div>{{ activity.type_verbose }}</div>
+            <div>{{ activity.time_verbose }}</div>
+            <div>{{ activity.day }}</div>
+            <a href="{% url 'edit_workout' activity.id %}">
                 <button>
                     Edit
                 </button>
