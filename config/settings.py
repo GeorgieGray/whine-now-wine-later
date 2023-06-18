@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,7 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_URL='/user/login'
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG')
+
+ALLOWED_HOSTS = json.loads(os.getenv('ALLOWED_HOSTS'))
 
 
 # Application definition
