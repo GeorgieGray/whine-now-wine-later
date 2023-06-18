@@ -30,6 +30,10 @@ class Login(FormView):
                 password=form.cleaned_data["password"],
             )
             login(request, user)
+
+            if request.GET.__contains__('next'):
+                return redirect(request.GET.__getitem__('next'))
+
             return redirect("root")
         else:            
             return redirect("login")
