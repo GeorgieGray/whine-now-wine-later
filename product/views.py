@@ -12,6 +12,9 @@ class Workouts(ListView):
     template_name = "workouts.html"
     model = Workout
 
+    def get_queryset(self):
+        return Workout.objects.filter(user=self.request.user)
+
 class CreateWorkout(CreateView):
     template_name="workout_form.html"
     model = Workout
