@@ -26,6 +26,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = json.loads(os.getenv('ALLOWED_HOSTS'))
 
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Application definition
 
