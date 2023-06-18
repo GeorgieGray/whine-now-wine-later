@@ -3,6 +3,6 @@ from django.shortcuts import reverse
 
 class CheckoutSitemap(Sitemap):
     def items(self):
-        return ['checkout']
+        return ['checkout', 'thanks']
     def location(self, item):
         return reverse(item)

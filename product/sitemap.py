@@ -3,6 +3,6 @@ from django.shortcuts import reverse
 
 class ProductSitemap(Sitemap):
     def items(self):
-        return ['root']
+        return ['root', 'workout_list', 'create_workout', 'edit_workout', 'delete_workout']
     def location(self, item):
         return reverse(item)
