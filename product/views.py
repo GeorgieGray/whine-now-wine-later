@@ -1,8 +1,9 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Product, Workout
 from django.contrib.admin.widgets import AdminDateWidget
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 class Buy(ListView):
     template_name = "buy.html"
@@ -31,8 +32,19 @@ class CreateWorkout(CreateView):
         workout.user = self.request.user
         return super(CreateWorkout, self).form_valid(form)
 
-class EditWorkout(UpdateView):
+class EditWorkout(UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        workout = Workout.objects.get(pk=self.kwargs['pk'])
+        return self.request.user.id == workout.user.id
     template_name="workout_form.html"
     model = Workout
     fields = ["type", "time", "day"]
+    success_url="/workouts"
+
+class DeleteWorkout(UserPassesTestMixin, DeleteView):
+    def test_func(self):
+        workout = Workout.objects.get(pk=self.kwargs['pk'])
+        return self.request.user.id == workout.user.id
+    template_name="workout_delete.html"
+    model = Workout
     success_url="/workouts"
