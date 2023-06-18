@@ -42,7 +42,7 @@ class Login(FormView):
 class Register(FormView):
     template_name = "register.html"
     form_class = RegisterForm
-    success_url = "/register"
+    success_url = "/root"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
