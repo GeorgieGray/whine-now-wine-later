@@ -7,11 +7,13 @@ from django.contrib.sitemaps.views import sitemap
 from user.sitemap import UserSitemap
 from product.sitemap import ProductSitemap
 from checkout.sitemap import CheckoutSitemap
+from mailing_list.sitemap import MailingListSitemap
 
 sitemaps = {
     'product': ProductSitemap,
     'user': UserSitemap,
-    'checkout': CheckoutSitemap
+    'checkout': CheckoutSitemap,
+    'mail': MailingListSitemap
 }
 
 urlpatterns = [
@@ -19,5 +21,6 @@ urlpatterns = [
     path('', include('product.urls')),
     path('user/', include('user.urls')),
     path("checkout/", include('checkout.urls')),
+    path("mail/", include('mailing_list.urls')),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps})
 ]
