@@ -10,6 +10,12 @@ class Join(CreateView):
     fields = ["email"]
     success_url="/mail/thanks"
 
+    def get_form(self, form_class=None):
+        form = super(Join, self).get_form(form_class)
+        form.fields['email'].widget.attrs['class'] = 'form-control'
+
+        return form
+
 def get_subscriber_or_none(email):
     try:
         return Subscriber.objects.get(pk=email)
@@ -20,6 +26,12 @@ class Unsubscribe(FormView):
     template_name="newsletter_unsub.html"
     fields = ["email"]
     form_class = SubscriberForm
+
+    def get_form(self, form_class=None):
+        form = super(Unsubscribe, self).get_form(form_class)
+        form.fields['email'].widget.attrs['class'] = 'form-control'
+
+        return form
 
     def form_valid(self, form):
         sub = get_subscriber_or_none(form.cleaned_data['email'])

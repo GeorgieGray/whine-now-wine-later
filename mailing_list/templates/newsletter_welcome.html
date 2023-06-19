@@ -1,1 +1,17 @@
-Thanks for subscribing! Watch your inbox for our next great email.
+{% extends "base.html" %}
+
+{% block nav %}
+{% include "nav.html" with category="mail"%}
+{% endblock %}
+
+{% block main %}
+<h1 class="px-5 mt-5">
+    Thanks for subscribing! 
+</h1>
+<p class="lead">
+    Watch your inbox for our next great email. See you soon.
+</p>
+<a type="button" class="btn btn-primary" href="{% url 'root' %}">
+    Back to memberships
+</a>
+{% endblock %}

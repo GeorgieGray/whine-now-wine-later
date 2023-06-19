@@ -1,5 +1,18 @@
+{% extends "base.html" %}
+
+{% block nav %}
+{% include "nav.html" with category="mail"%}
+{% endblock %}
+
+{% block main %}
+<h1 class="mt-5">
+    Leave our community
+</h1>
+<p class="lead mt-2" style="max-width: 70vw">
+    It's not us it's you, we understand!
+</p>
 <form method="post">{% csrf_token %}
-    Enter your email address to unsubscribe
     {{ form }}
-    <input type="submit" value="Unsubscribe">
+    <input type="submit" class="btn btn-primary mt-3" value="Unsubscribe">
 </form>
+{% endblock %}

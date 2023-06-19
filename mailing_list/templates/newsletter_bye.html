@@ -1,1 +1,17 @@
-We're sorry to see you go! You will no longer recieve email from us.
+{% extends "base.html" %}
+
+{% block nav %}
+{% include "nav.html" with category="mail"%}
+{% endblock %}
+
+{% block main %}
+<h1 class="px-5 mt-5">
+    We're sorry to see you go!
+</h1>
+<p class="lead">
+    You will no longer recieve email from us.
+</p>
+<a type="button" class="btn btn-primary" href="{% url 'root' %}">
+    Back to memberships
+</a>
+{% endblock %}

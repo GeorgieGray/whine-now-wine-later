@@ -1,4 +1,21 @@
+{% extends "base.html" %}
+
+{% block nav %}
+{% include "nav.html" with category="mail"%}
+{% endblock %}
+
+{% block main %}
+<h1 class="mt-5">
+    Join our community
+</h1>
+<p class="lead mt-2" style="max-width: 70vw">
+    Enter your email to join our community newsletter. We send regular tips and tricks to improve your workout, and information about upcoming events that you can join for free.
+</p>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Subscribe">
+    <input type="submit" class="btn btn-primary" value="Subscribe">
 </form>
+<div class="mt-5">
+    Already a member, and looking to leave the community? No problem simply <a href="{% url 'leave_news' %}">unsubscribe</a>.
+</div>
+{% endblock %}
