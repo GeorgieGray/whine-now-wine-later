@@ -1,28 +1,28 @@
-<html>
-    <header>
+{% extends "base.html" %}
 
-    </header>
-    <body>
-        <a href="{% url 'create_workout' %}">
-            <button>
-                Create
-            </button>
-        </a>
-        {% for activity in object_list %}
-            <div>{{ activity.type_verbose }}</div>
-            <div>{{ activity.time_verbose }}</div>
-            <div>{{ activity.day }}</div>
-            <a href="{% url 'edit_workout' activity.id %}">
-                <button>
-                    Edit
-                </button>
-            </a>
-            <a href="{% url 'delete_workout' activity.id %}">
-                <button>
-                    Delete
-                </button>
-            </a>
-            <br /> <br />
-        {% endfor %}
-    </body>
-</html>
+{% block nav %}
+{% include "nav.html" with category="workout"%}
+{% endblock %}
+
+{% block main %}
+<div class="buttons">
+    <a href="{% url 'create_workout' %}" type="button" class="btn btn-primary">Plan a session</a>
+</div>
+<h1>
+    Your planned sessions
+</h1>
+<p class="lead mt-2 mb-5">
+    Being organised is the key to success, use our session planner to plan out your week, month or year.
+</p>
+{% for activity in object_list %}
+<div class="card mb-4" style="width: 500px;">
+    <div class="card-body">
+        <h5 class="card-title">{{ activity.type_verbose }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">@ {{ activity.time_verbose }}</h6>
+        <p class="card-text">{{ activity.day }}</p>
+        <a href="{% url 'edit_workout' activity.id %}" class="card-link">Edit</a>
+        <a href="{% url 'delete_workout' activity.id %}" class="card-link">Delete</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,4 +1,18 @@
+{% extends "base.html" %}
+
+{% block nav %}
+{% include "nav.html" with category="workout"%}
+{% endblock %}
+
+{% block main %}
+<h1 class="mt-5">
+    Create a session
+</h1>
+<p class="lead mt-2">
+    Lets get physical. Make a plan, invite some friends.
+</p>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save">
+    <input type="submit" class="btn btn-primary" value="Save">
 </form>
+{% endblock %}
