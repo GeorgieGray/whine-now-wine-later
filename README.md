@@ -1,6 +1,6 @@
 # Whine now, Wine later
 
-[Whine now, Wine later](https://ci-wnwl.herokuapp.com/) is a female only gym.
+[Whine now, Wine later](https://wnwl-4c7773784ff4.herokuapp.com/) is a female only gym.
 
 Female fitness enthusiasts of any age are given the opportunity to join a female led gym and join a community of like minded women. Users of the website can purchase memberships which can be used to attend personal , semi personal and strength training classes. A time and day can be selected for the class once logged in. 
 
@@ -11,7 +11,7 @@ The web application frontend has four high-level views:
 - Mailing list
 
 The website is hosted using Heroku, see it here:  
-https://ci-wnwl.herokuapp.com/
+https://wnwl-4c7773784ff4.herokuapp.com/
 
 ## Target Demographic
 - Women looking to get fit in a comfortable environment 
@@ -69,6 +69,35 @@ Install dependencies
 
 Run django app
 > python manage.py runserver
+
+## Testing
+During development I performed a smoke test using the following steps, it touches on all major parts of the application.
+
+- Register
+- Log in
+- Go to newsletter
+- Submit newsletter subscription
+- Unsubscribe from newsletter
+- Go to session planner
+- Create session
+- Edit session
+- Delete session
+- Go to memberships
+- Choose plan
+- BUY NOW
+- Navigate to stripe
+- Complete form
+    - email: any (no email is sent)
+    - card number: `4242 4242 4242 4242`
+    - card expiry: any date in the future
+    - card cvc: any three digit number
+    - Name on card: any name
+- Pay
+- See navigate to success view
+- Log out
+- See that logged in/logged out only content is available depending on login state
+- Check cannot see other users planned sessions
+- Check that cannot access views which require login
 
 ## Deployment
 The app is deployed to Heroku.
