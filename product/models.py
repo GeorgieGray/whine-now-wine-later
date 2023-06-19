@@ -8,12 +8,16 @@ class Product(models.Model):
     code = models.CharField(max_length=32, unique=True)
     description = models.TextField(blank=True)
     stripe_price = models.CharField(max_length=64)
+    image = models.TextField(blank=True)
 
     class Meta:
         ordering = ["id"]
 
     def __str__(self):
         return "Product: " + self.name
+
+    def price_pretty(self):
+        return "€" + str(int(self.price)) + ".00"
 
 class Workout(models.Model):
     WORKOUT_TYPES = [
