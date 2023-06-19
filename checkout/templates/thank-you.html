@@ -1,13 +1,25 @@
-{% load static %}
+{% extends "base.html" %}
 
-<html>
-    <header>
-    </header>
-    <body>
-       Thanks for your purchase! We're looking forward to seeing you at the gym.
-        <br><br>
-        {{ view.product.name }}
-        {{ view.product.description }}
-        €{{ view.product.price }}
-    </body>
-</html>
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block main %}
+<h1 class="px-5 mt-5">
+    Thanks for your purchase!
+</h1>
+<p class="lead mt-2" style="max-width: 70vw">
+    We're looking forward to seeing you at the gym.
+</p>
+<div class="card text-center mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ view.product.name }}</h5>
+      <p class="card-text">{{ view.product.description }}</p>
+      <p class="card-text fs-2">🎉🎉🎉</p>
+    </div>
+  </div>
+
+<a type="button" class="btn btn-primary" href="{% url 'root' %}">
+    Back to memberships
+</a>
+{% endblock %}

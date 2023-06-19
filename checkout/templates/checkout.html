@@ -1,25 +1,39 @@
-{% load static %}
+{% extends "base.html" %}
 
-<html>
-    <header>
-    </header>
-    <body>
-       Time to buy!
+{% block nav %}
+{% include "nav.html" with category="checkout"%}
+{% endblock %}
 
-       {{ view.product.name }}
-       {{ view.product.description }}
-
-       €{{ view.product.price }}
-
-       <button id="buy-now">
-            BUY NOW
-       </button>
-
-       <script>
+{% block scripts %}
+    {% load static %}
+    <script>
         window.productId = {{ view.product.id }}
-       </script>
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'main.js' %}"></script>
+{% endblock %}
 
-       <script src="https://js.stripe.com/v3/"></script>
-       <script src="{% static 'main.js' %}"></script>
-    </body>
-</html>
+{% block main %}
+<h1 class="px-5 mt-5">
+    Checkout
+</h1>
+<p class="lead mt-2" style="max-width: 70vw">
+   Press the button below to proceed to our payment processor.
+</p>
+<div class="card text-center mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ view.product.name }}</h5>
+      <p class="card-text">{{ view.product.description }}</p>
+      <p class="card-text fs-2">{{ view.product.price_pretty }}</p>
+      <a id="buy-now" class="btn btn-primary">
+        BUY NOW
+      </A>
+    </div>
+  </div>
+{% endblock %}
+
+       
+
+       
+
+    
