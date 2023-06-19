@@ -1,0 +1,37 @@
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">WNWL</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      {% if category != "checkout" %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if category == "main" %}active{% endif %}" href="/">Memberships</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if category == "mail" %}active{% endif %}" href="/mail">Newsletter</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link {% if category == "workout" %}active{% endif %}" href="/workouts">Session planner</a>
+          </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      <div class="d-flex navbar-text active">
+        {% if user.is_authenticated %}
+        Logged in as:<span class="px-1" style="font-weight: bold;">{{ user.username }}</span><span class="small-link">(<a href="{% url 'logout' %}">Log Out</a>)</span>
+        {% else %}
+        <a href="{% url 'register' %}"  class="btn btn-outline" type="button">
+          Register
+        </a>
+        <a href="{% url 'login' %}" class="btn btn-outline-info" type="button">
+          Log in
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
