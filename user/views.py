@@ -1,6 +1,5 @@
 from django.views.generic.edit import FormView
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm, LoginForm
 from django.shortcuts import redirect
 from django.views import View
@@ -12,7 +11,7 @@ class Logout(View):
 
 class Login(FormView):
     template_name = "login.html"
-    form_class = AuthenticationForm
+    form_class = LoginForm
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:

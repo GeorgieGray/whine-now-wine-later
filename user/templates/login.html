@@ -1,15 +1,18 @@
+{% extends "base.html" %}
 
-<html>
-    <header>
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
 
-    </header>
-    <body>
-        <form method="POST" novalidate>
-            {% csrf_token %}
-            <h2>Login</h2>
-            {{form.as_p}}
-            <input type="hidden" name="next" value="{{ request.GET.next }}" />
-            <input type="submit" value="Login" />
-        </form>
-    </body>
-</html>
+{% block main %}
+<h1 class="mt-5">Login</h1>
+<p class="lead">
+    Don't have an account? <a href="{% url 'register' %}">create one now</a>.
+</p>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>
+{% endblock %}

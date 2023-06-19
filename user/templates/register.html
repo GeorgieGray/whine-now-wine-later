@@ -1,13 +1,17 @@
-<html>
-    <header>
+{% extends "base.html" %}
 
-    </header>
-    <body>
-        Register
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
-        </form>
-    </body>
-</html>
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block main %}
+<h1 class="mt-5">Create an account</h1>
+<p class="lead">
+    Sign up to our platform to buy membership and plan your workout sessions.
+</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary">
+</form>
+{% endblock %}
