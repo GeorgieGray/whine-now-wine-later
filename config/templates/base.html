@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Whine now, wine later</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
+        <meta name="description" content="Discover the best gym memberships for women at our fitness center. Get access to state-of-the-art facilities, personalized exercise plans, and a supportive community. Join now and start your fitness journey today!">
+        <meta name="keywords" content="gym memberships, women's gym, fitness center, exercise plans, workout routines">
+    </head>
+
+    <body>
+        <nav>
+            {% block nav %}{% endblock %}
+        </nav>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
