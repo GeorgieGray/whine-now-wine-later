@@ -1,33 +1,58 @@
-<html>
-    <header>
+{% extends "base.html" %}
 
-    </header>
-    <body>
-        Hello world!
+{% block nav %}
+{% include "nav.html" with category="main"%}
+{% endblock %}
 
-        {% if user.is_authenticated %}
-            Hi {{ user.username }}!
-            <p><a href="{% url 'logout' %}">Log Out</a></p>
-        {% else %}
-            <p>You are not logged in</p>
-            <a href="{% url 'login' %}">Log In</a>
-        {% endif %}
-
-        {% for product in object_list %}
-            <li>{{ product.name }}</li>
+{% block main %}
+<p class="lead mt-5" style="max-width: 600px; text-align: center;">
+    Whine now, Wine later is a female only gym which hosts classes for fitness enthusiasts seeking personal training, semi-personal training, and strength training classes in a comfortable inclusive enviromnent.
+</p>
+<h1>Our memberships</h1>
+<div class="product-cards mt-3">
+{% for product in object_list %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{ product.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ product.price_pretty }}</li>
+        </ul>
+        <div class="card-body">
             {% if user.is_authenticated %}
                 <a href="{% url 'checkout' product.id %}">
-                    <button>
+                    <button class="btn btn-primary">
                         Buy now
                     </button>
                 </a>
             {% else %}
                 <a href="{% url 'login' %}">
-                    <button>
-                        Log in
+                    <button class="btn btn-primary">
+                        Log in to buy
                     </button>
                 </a>
             {% endif %}
-        {% endfor %}
-    </body>
-</html>
+        </div>
+    </div>    
+{% endfor %}
+</div>
+{% endblock %}
+
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
