@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import json
 from dotenv import load_dotenv
+import django_heroku
 
 load_dotenv()
 
@@ -136,4 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     "config/static"
 ]
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+django_heroku.settings(locals())
